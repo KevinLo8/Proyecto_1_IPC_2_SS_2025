@@ -1,7 +1,7 @@
 <%-- 
     Document   : resources
-    Created on : Aug 27, 2025, 4:51:09 PM
-    Author     : jose
+    Created on : 5/09/2025, 9:44:25 p. m.
+    Author     : Kevin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,25 +1,46 @@
 <%-- 
     Document   : header
-    Created on : Aug 27, 2025, 4:44:14 PM
-    Author     : jose
+    Created on : 5/09/2025, 9:40:59 p. m.
+    Author     : Kevin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <div class="container"> 
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"> 
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"> 
-            <i class="bi bi-bootstrap" style="font-size: 2rem;"></i>
-            <span class="mx-3 fs-4">Gestión de congresos</span> 
-        </a>
-        <ul class="nav nav-pills"> 
-            <li class="nav-item">
-                <a href="${pageContext.servletContext.contextPath}/index.jsp?valor=55&opcion=1&num1=7&num2=3" class="nav-link active" aria-current="page">Inicio</a>
-            </li> 
-            <li class="nav-item"><a href="#" class="nav-link">Usuarios</a></li> 
-            <li class="nav-item"><a href="#" class="nav-link">Congresos</a></li> 
-            <li class="nav-item"><a href="#" class="nav-link">Actividades</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Acerca De</a></li>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"> 
+        <div class="col-md-3 mb-2 mb-md-0">  
+            <a href="${pageContext.servletContext.contextPath}/index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"> 
+                <i class="bi bi-bootstrap" style="font-size: 2rem;"></i>
+                <span class="mx-3 fs-4">Gestión de congresos</span> 
+            </a>
+        </div> 
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
+            <li><a href="#" class="nav-link px-2">Congresos</a></li> 
+            <li><a href="#" class="nav-link px-2">Actividades</a></li> 
+            <li><a href="#" class="nav-link px-2">Acerca De</a></li>
         </ul> 
+        <div class="col-md-3 text-end"> 
+            <c:if test="${correo == null}">
+
+                <a type="button" href="${pageContext.servletContext.contextPath}/inicio-sesion/inicio-sesion.jsp" class="btn btn-outline-primary me-2">Iniciar Sesión</a> 
+                <a type="button" href="${pageContext.servletContext.contextPath}/inicio-sesion/crear-usuario.jsp" class="btn btn-primary">Crear Usuario</a>
+
+            </c:if>
+            <c:if test="${correo != null}">
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${correo}</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">1</a></li>
+                        <li><a class="dropdown-item" href="#">2</a></li>
+                        <li><a class="dropdown-item" href="#">3</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cerrar-sesion-servlet">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+
+            </c:if>
+        </div>
     </header>
 </div>
-

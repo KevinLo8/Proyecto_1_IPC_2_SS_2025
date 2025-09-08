@@ -1,2 +1,10 @@
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBUsuario.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ConexionDB.java
-D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\Exception\DatabaseException.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\exceptions\ConsultaException.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\exceptions\DatabaseException.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\exceptions\DataErrorException.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\usuario\ProcesadorUsuario.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\usuario\Usuario.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\inicio_sesion\ControladorCerrarSesion.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\inicio_sesion\ControladorCrearUsuario.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\inicio_sesion\ControladorInicioSesion.java

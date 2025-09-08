@@ -1,8 +1,7 @@
 package com.proyecto_1.proyecto_1.backend.db;
 
+import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
 import java.sql.*;
-
-import com.proyecto_1.proyecto_1.backend.Exception.DatabaseException;
 
 public class ConexionDB {
 
@@ -18,9 +17,12 @@ public class ConexionDB {
     private Connection connection;
 
     private ConexionDB() throws DatabaseException {
+
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
             throw new DatabaseException("Ha ocurido un error al conectarse a la Base de Datos.");
         }
     }

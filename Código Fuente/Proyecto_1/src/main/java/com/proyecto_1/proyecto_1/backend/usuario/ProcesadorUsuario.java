@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProcesadorUsuario {
 
-    public void chequearInicioSesion(Usuario usuario) throws DataErrorException, DatabaseException {
+    public Usuario chequearInicioSesion(Usuario usuario) throws DataErrorException, DatabaseException {
 
         ClaseDBUsuario database = new ClaseDBUsuario();
         Usuario usuarioTemp = database.solicitarUsuario(usuario.getCorreoElectronico());
@@ -25,6 +25,7 @@ public class ProcesadorUsuario {
             throw new DataErrorException("correo electrónico o contraseña incorrecto.");
         }
 
+        return usuarioTemp;
     }
 
     public void chequearYCrearUsuario(Usuario usuario) throws DataErrorException, DatabaseException {

@@ -32,9 +32,15 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${correo}</button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">1</a></li>
-                        <li><a class="dropdown-item" href="#">2</a></li>
-                        <li><a class="dropdown-item" href="#">3</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/informacion/cargar-informacion-servlet">Información</a></li>
+
+                        <c:if test="${usuario.adminSistema == true}">
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/institucion/listado-de-instituciones-servlet">Administrar Instituciones</a></li>
+
+                        </c:if>
+
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cerrar-sesion-servlet">Cerrar Sesión</a></li>
                     </ul>

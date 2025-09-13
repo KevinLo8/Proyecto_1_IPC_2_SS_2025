@@ -20,7 +20,7 @@ public class ControladorInicioSesion extends HttpServlet {
         try {
             ProcesadorUsuario chequeadorUsuario = new ProcesadorUsuario();
             usuario = new Usuario(req.getParameter("correo"), req.getParameter("contraseña"));
-            chequeadorUsuario.chequearInicioSesion(usuario);
+            usuario = chequeadorUsuario.chequearInicioSesion(usuario);
         } catch (DataErrorException | DatabaseException e) {
             error = e.getMessage();
         }
@@ -28,7 +28,7 @@ public class ControladorInicioSesion extends HttpServlet {
         RequestDispatcher disparcher = null;
         if (StringUtils.isBlank(error)) {
             req.getSession().setAttribute("correo", req.getParameter("correo"));
-            req.setAttribute("usuario", usuario);
+            req.getSession().setAttribute("usuario", usuario);
             disparcher = req.getRequestDispatcher("/inicio-sesion/inicio-sesion-completado.jsp");
         } else {
             req.setAttribute("error", error);

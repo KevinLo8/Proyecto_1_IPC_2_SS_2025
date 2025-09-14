@@ -8,17 +8,17 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import org.apache.commons.lang3.StringUtils;
 
-@WebServlet(name = "ControladorCrearUsuario", urlPatterns = {"/inicio-sesion/crear-usuario-servlet"})
-public class ControladorCrearUsuario extends HttpServlet {
+@WebServlet(name = "CrearUsuarioServlet", urlPatterns = {"/inicio-sesion/crear-usuario-servlet"})
+public class CrearUsuarioServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String error = "";
 
         try {
             ProcesadorUsuario chequeadorUsuario = new ProcesadorUsuario();
-            Usuario usuario = new Usuario(req.getParameter("correo"), req.getParameter("contraseña"));
+            Usuario usuario = new Usuario(request.getParameter("correo"), request.getParameter("contraseña"));
             chequeadorUsuario.chequearYCrearUsuario(usuario);
         } catch (DataErrorException | DatabaseException e) {
             error = e.getMessage();
@@ -26,12 +26,12 @@ public class ControladorCrearUsuario extends HttpServlet {
 
         RequestDispatcher disparcher = null;
         if (StringUtils.isBlank(error)) {
-            disparcher = req.getRequestDispatcher("/inicio-sesion/crear-usuario-completado.jsp");
+            disparcher = request.getRequestDispatcher("/inicio-sesion/crear-usuario-completado.jsp");
         } else {
-            req.setAttribute("error", error);
-            disparcher = req.getRequestDispatcher("/inicio-sesion/crear-usuario.jsp");
+            request.setAttribute("error", error);
+            disparcher = request.getRequestDispatcher("/inicio-sesion/crear-usuario.jsp");
         }
-        disparcher.forward(req, resp);
+        disparcher.forward(request, response);
 
     }
 }

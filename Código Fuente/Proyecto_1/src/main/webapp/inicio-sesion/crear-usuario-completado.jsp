@@ -16,7 +16,7 @@
         <jsp:include page="../includes/header.jsp"/>
         <div class="container my-5">
             <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-                <h1 class="text-body-emphasis">Creación de usuario completo</h1>
+                <h1 class="text-body-emphasis">Creación de usuario completado</h1>
                 <p class="col-lg-6 mx-auto mb-4">
                     El usuario a sido creado exitosamente.
                 </p>

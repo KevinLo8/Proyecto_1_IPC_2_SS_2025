@@ -26,7 +26,7 @@
 
                     <div class="mb-3">
                         <label for=" sampleInpuUserName" class="form-label">Correo Electrónico</label>
-                        <input type="text" class="form-control" name="correo" value="${param.correo}" minlength="1" maxlength="150" required>
+                        <input type="text" class="form-control" inputmode="email" name="correo" value="${param.correo}" minlength="1" maxlength="150" required>
                     </div>
 
                     <div class="mb-3">

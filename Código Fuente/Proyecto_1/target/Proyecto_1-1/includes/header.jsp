@@ -42,6 +42,7 @@
                         </c:if>
 
                         <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cambiar-contraseña.jsp">Cambiar contraseña</a></li>
                         <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cerrar-sesion-servlet">Cerrar Sesión</a></li>
                     </ul>
                 </div>

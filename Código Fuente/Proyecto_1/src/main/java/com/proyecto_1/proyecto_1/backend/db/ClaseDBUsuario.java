@@ -66,8 +66,8 @@ public class ClaseDBUsuario {
             throw new DatabaseException("Error al crear el usuario.");
         }
     }
-    
-    public void crearAdminSistema (Usuario usuario) throws DatabaseException {
+
+    public void crearAdminSistema(Usuario usuario) throws DatabaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE usuario SET habilitacionAdministradorSistema = 1 WHERE correoElectronico = ?";
 
@@ -81,6 +81,24 @@ public class ClaseDBUsuario {
         } catch (SQLException e) {
             throw new DatabaseException("Error al crear el administrador de sistema.");
         }
+    }
+
+    public void cambiarContraseña(Usuario usuario) throws DatabaseException {
+        Connection connection = ConexionDB.getInstance().getConnection();
+        String query = "UPDATE usuario SET contraseña = ? WHERE correoElectronico = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, usuario.getContraseñaUsuario());
+            preparedStatement.setString(2, usuario.getCorreoElectronico());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new DatabaseException("Error al modificar la contraseña del usuario..");
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Error al cambiar la contraseña del usuario.");
+        }
+
     }
 
 }

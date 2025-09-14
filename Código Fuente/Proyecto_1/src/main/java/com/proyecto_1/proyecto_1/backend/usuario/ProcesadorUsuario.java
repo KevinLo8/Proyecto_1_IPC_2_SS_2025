@@ -36,14 +36,31 @@ public class ProcesadorUsuario {
         if (usuarioTemp != null) {
             throw new DataErrorException("Ya existe un usuario con ese correo electrónico.");
         }
-        
+
         database.crearUsuario(usuario);
 
         ArrayList administradores = database.solicitarAdministradores();
-        if (administradores.size() == 0) {
+        if (administradores.isEmpty()) {
             database.crearAdminSistema(usuario);
         }
+
+    }
+
+    public void chequearCambioContraseña(String correo, String contraseñaVieja, String contraseñaNueva) throws DataErrorException, DatabaseException {
+
+        ClaseDBUsuario database = new ClaseDBUsuario();
+        Usuario usuarioTemp = database.solicitarUsuario(correo);
+        Usuario usuario = new Usuario(correo, contraseñaVieja);
+
+        if (usuarioTemp == null) {
+            throw new DataErrorException("No existe un usuario con el correo " + correo + " .");
+        } else if (!usuario.getContraseñaUsuario().equals(usuarioTemp.getContraseñaUsuario())) {
+            throw new DataErrorException("A ingresado una contraseña actual incorrecta.");
+        }
         
+        usuario = new Usuario(correo, contraseñaNueva);
+        
+        database.cambiarContraseña(usuario);
     }
 
 }

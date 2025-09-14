@@ -31,7 +31,7 @@
                             <div class="col-12">
                                 <label for="username" class="form-label">Correo electrónico del usuario</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" value="${param.correo}" placeholder="Correo Electrónico" name="correo" minlength="1" maxlength="150" required>
+                                    <input type="text" class="form-control" inputmode="email" value="${param.correo}" placeholder="Correo Electrónico" name="correo" minlength="1" maxlength="150" required>
                                     <div class="invalid-feedback">
                                         se requiere un correo electrónico.
                                     </div>

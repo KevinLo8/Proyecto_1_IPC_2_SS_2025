@@ -16,7 +16,7 @@
         <jsp:include page="../includes/header.jsp"/>
         <div class="container my-5">
             <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-                <h1 class="text-body-emphasis">Inicio de Sesión Completo</h1>
+                <h1 class="text-body-emphasis">Inicio de Sesión Completado</h1>
                 <p class="col-lg-6 mx-auto mb-4">
                     Se a iniciado la sesión correctamente.
                 </p>

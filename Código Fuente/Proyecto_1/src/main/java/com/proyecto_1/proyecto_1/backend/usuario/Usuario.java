@@ -4,6 +4,7 @@ import com.proyecto_1.proyecto_1.backend.exceptions.DataErrorException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.commons.lang3.StringUtils;
+import java.util.Base64;
 
 /**
  *
@@ -30,7 +31,7 @@ public class Usuario {
         }
         
         this.correoElectronico = correoElectronico;
-        this.contraseñaUsuario = contraseñaUsuario;
+        this.contraseñaUsuario = Base64.getEncoder().encodeToString(contraseñaUsuario.getBytes());
     }
 
     public Usuario(ResultSet resultSet) throws SQLException {

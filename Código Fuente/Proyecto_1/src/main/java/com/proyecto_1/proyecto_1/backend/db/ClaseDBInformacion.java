@@ -35,6 +35,11 @@ public class ClaseDBInformacion {
         return informacion;
     }
 
+    public int solicitarInstitucionDeUsuario(String correo) throws DatabaseException {
+        Informacion informacion = solicitarInformacionPorCorreo(correo);
+        return informacion.getIdInstitución();
+    }
+
     private Informacion solicitarInformacion(String query, String data) throws DatabaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
 

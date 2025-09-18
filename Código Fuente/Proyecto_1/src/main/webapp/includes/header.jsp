@@ -38,11 +38,19 @@
 
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/institucion/listado-de-instituciones-servlet">Administrar Instituciones</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/usuario/listado-de-usuarios-servlet">Administrar Usuarios</a></li>
+
+                        </c:if>
+
+                        <c:if test="${usuario.adminCongreso == true}">
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/congreso/formulario-congreso-servlet">Crear Congreso</a></li>
 
                         </c:if>
 
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cambiar-contraseña.jsp">Cambiar contraseña</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cambiar-contraseña.jsp">Cambiar Contraseña</a></li>
                         <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio-sesion/cerrar-sesion-servlet">Cerrar Sesión</a></li>
                     </ul>
                 </div>

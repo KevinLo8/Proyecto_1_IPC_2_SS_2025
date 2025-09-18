@@ -37,7 +37,7 @@ public class Informacion {
     public Informacion(ResultSet resultSet) throws SQLException {
         numeroIdentificacion = resultSet.getString("numeroIdentificacion");
         nombreUSuario = resultSet.getString("nombre");
-        idInstitución = resultSet.getInt("idIntitucion");
+        idInstitución = resultSet.getInt("idInstitucion");
         numeroTelefono = resultSet.getString("numeroTelefono");
         dinero = resultSet.getDouble("saldo");
         correoUsuario = resultSet.getString("correoUsuario");

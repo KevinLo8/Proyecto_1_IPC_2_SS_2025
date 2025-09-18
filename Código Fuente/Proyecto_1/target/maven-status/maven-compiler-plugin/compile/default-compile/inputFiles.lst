@@ -1,3 +1,7 @@
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\congreso\Congreso.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\congreso\ProcesadorCongreso.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBComite.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBCongreso.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBFoto.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBInformacion.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBInstitucion.java
@@ -15,6 +19,8 @@ D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fue
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\institucion\ProcesadorInstitucion.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\usuario\ProcesadorUsuario.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\usuario\Usuario.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\congreso\CrearCongresoServlet.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\congreso\FormularioCongresoServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\dinero\AgregarDineroServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\dinero\CargarDineroServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\informacion\CargarInformacionServlet.java
@@ -27,3 +33,6 @@ D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fue
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\instituciones\EliminarInstituciónServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\instituciones\ListadoDeInstitucionesServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\instituciones\ModificarInstitucionServlet.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\usuarios\CrearAdministradorCongresoServlet.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\usuarios\ListadoUsuariosCongresosServlet.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\usuarios\ListadoUsuariosServlet.java

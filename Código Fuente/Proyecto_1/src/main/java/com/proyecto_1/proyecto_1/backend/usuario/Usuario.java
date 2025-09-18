@@ -1,6 +1,7 @@
 package com.proyecto_1.proyecto_1.backend.usuario;
 
 import com.proyecto_1.proyecto_1.backend.exceptions.DataErrorException;
+import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +18,7 @@ public class Usuario {
     private boolean adminSistema;
     private boolean adminCongreso;
     private boolean activacion;
+    private Informacion informacion;
 
     public Usuario(String correoElectronico, String contraseñaUsuario) throws DataErrorException {
 
@@ -61,4 +63,13 @@ public class Usuario {
     public boolean isAdminSistema() {
         return adminSistema;
     }
+
+    public Informacion getInformacion() {
+        return informacion;
+    }
+
+    public void setInformacion(Informacion informacion) {
+        this.informacion = informacion;
+    }
+    
 }

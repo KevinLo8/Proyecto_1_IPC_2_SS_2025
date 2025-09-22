@@ -15,7 +15,7 @@ import com.proyecto_1.proyecto_1.backend.usuario.Usuario;
  */
 public class ProcesadorInformacion {
 
-    public void chequearYGuardarInformacion(String identificacion, String nombre, String nombreinstitucion, String telefono, String correo) throws DataErrorException, DatabaseException {
+    public void chequearYGuardarInformacion(String identificacion, String nombre, String nombreinstitucion, String telefono, String correo) throws DataErrorException, DataBaseException {
         ClaseDBUsuario databaseUsuario = new ClaseDBUsuario();
         ClaseDBInstitucion databaseInstitucion = new ClaseDBInstitucion();
         ClaseDBInformacion databaseInformacion = new ClaseDBInformacion();

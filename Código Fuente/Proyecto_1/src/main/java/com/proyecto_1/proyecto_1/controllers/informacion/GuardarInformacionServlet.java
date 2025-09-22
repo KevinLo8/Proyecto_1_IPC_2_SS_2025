@@ -39,7 +39,7 @@ public class GuardarInformacionServlet extends HttpServlet {
             }
           
 
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

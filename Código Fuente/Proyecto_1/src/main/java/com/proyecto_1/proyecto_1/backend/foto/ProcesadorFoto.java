@@ -14,7 +14,7 @@ import java.io.InputStream;
  */
 public class ProcesadorFoto {
 
-    public void chequearYGuardarFoto(String identificacion, InputStream data, String nombre, String tipo, long tamaño) throws DataErrorException, DatabaseException {
+    public void chequearYGuardarFoto(String identificacion, InputStream data, String nombre, String tipo, long tamaño) throws DataErrorException, DataBaseException {
 
         ClaseDBFoto database = new ClaseDBFoto();
       

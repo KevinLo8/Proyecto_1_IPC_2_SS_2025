@@ -5,7 +5,7 @@
 package com.proyecto_1.proyecto_1.controllers.informacion;
 
 import com.proyecto_1.proyecto_1.backend.db.*;
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.foto.Foto;
 import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
 import com.proyecto_1.proyecto_1.backend.institucion.Institucion;
@@ -52,7 +52,7 @@ public class CargarInformacionServlet extends HttpServlet {
             instituciones = databaseInstitucion.solicitarInstituciones(0);
             request.setAttribute("instituciones", instituciones);
 
-        } catch (DatabaseException e) {
+        } catch (DataBaseException e) {
             request.setAttribute("errordb", e.getMessage());
         }
 

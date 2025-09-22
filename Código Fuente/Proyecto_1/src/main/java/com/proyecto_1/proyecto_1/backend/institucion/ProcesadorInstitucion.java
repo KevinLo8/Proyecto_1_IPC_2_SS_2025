@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ProcesadorInstitucion {
 
-    public void crearYGuardarInstitucion(String nombre) throws DatabaseException, DataErrorException {
+    public void crearYGuardarInstitucion(String nombre) throws DataBaseException, DataErrorException {
         ClaseDBInstitucion database = new ClaseDBInstitucion();
 
         Institucion institucionTemp = database.solicitarInstitucion(nombre);
@@ -28,7 +28,7 @@ public class ProcesadorInstitucion {
         database.crearInstitucion(institucion);
     }
 
-    public void chequearYModificarInstitucion(String nombreViejo, String nombreNuevo) throws DatabaseException, DataErrorException {
+    public void chequearYModificarInstitucion(String nombreViejo, String nombreNuevo) throws DataBaseException, DataErrorException {
         ClaseDBInstitucion database = new ClaseDBInstitucion();
 
         Institucion institucionTemp = database.solicitarInstitucion(nombreNuevo);
@@ -41,7 +41,7 @@ public class ProcesadorInstitucion {
         database.modificarNombre(institucion, nombreNuevo);
     }
 
-    public void chequearYEliminiarInstitucion(String nombre) throws DatabaseException, DataErrorException {
+    public void chequearYEliminiarInstitucion(String nombre) throws DataBaseException, DataErrorException {
         ClaseDBInstitucion database = new ClaseDBInstitucion();
 
         Institucion institucionTemp = database.solicitarInstitucion(nombre);

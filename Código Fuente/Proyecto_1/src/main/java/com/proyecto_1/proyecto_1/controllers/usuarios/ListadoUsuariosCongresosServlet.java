@@ -5,7 +5,7 @@
 package com.proyecto_1.proyecto_1.controllers.usuarios;
 
 import com.proyecto_1.proyecto_1.backend.db.ClaseDBUsuario;
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.usuario.Usuario;
 import java.io.IOException;
 import jakarta.servlet.*;
@@ -37,7 +37,7 @@ public class ListadoUsuariosCongresosServlet extends HttpServlet {
         try {
             ArrayList<Usuario> usuarios = databaseUsuario.solicitarUsuariosParaAdministradorCongreso();
             request.setAttribute("usuarios", usuarios);
-        } catch (DatabaseException e) {
+        } catch (DataBaseException e) {
             request.setAttribute("errordb", e.getMessage());
         }
 

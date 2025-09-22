@@ -20,7 +20,7 @@ public class ProcesadorUsuario {
         database = new ClaseDBUsuario();
     }
 
-    public Usuario chequearInicioSesion(Usuario usuario) throws DataErrorException, DatabaseException {
+    public Usuario chequearInicioSesion(Usuario usuario) throws DataErrorException, DataBaseException {
 
         Usuario usuarioTemp = database.solicitarUsuario(usuario.getCorreoElectronico());
 
@@ -35,7 +35,7 @@ public class ProcesadorUsuario {
         return usuarioTemp;
     }
 
-    public void chequearYCrearUsuario(Usuario usuario) throws DataErrorException, DatabaseException {
+    public void chequearYCrearUsuario(Usuario usuario) throws DataErrorException, DataBaseException {
 
         Usuario usuarioTemp = database.solicitarUsuario(usuario.getCorreoElectronico());
 
@@ -52,7 +52,7 @@ public class ProcesadorUsuario {
 
     }
 
-    public void chequearCambioContraseña(String correo, String contraseñaVieja, String contraseñaNueva) throws DataErrorException, DatabaseException {
+    public void chequearCambioContraseña(String correo, String contraseñaVieja, String contraseñaNueva) throws DataErrorException, DataBaseException {
 
         Usuario usuarioTemp = database.solicitarUsuario(correo);
         Usuario usuario = new Usuario(correo, contraseñaVieja);
@@ -68,7 +68,7 @@ public class ProcesadorUsuario {
         database.cambiarContraseña(usuario);
     }
 
-    public void chequearYCrearAdminitradorCongreso(String correo) throws DataErrorException, DatabaseException {
+    public void chequearYCrearAdminitradorCongreso(String correo) throws DataErrorException, DataBaseException {
 
         Usuario usuario = database.solicitarUsuario(correo);
 
@@ -83,7 +83,7 @@ public class ProcesadorUsuario {
         database.crearAdminCongreso(usuario);
     }
 
-    public ArrayList<Usuario> crearArrreglo(String[] correos) throws DatabaseException {
+    public ArrayList<Usuario> crearArrreglo(String[] correos) throws DataBaseException {
         ArrayList<Usuario> comite = new ArrayList<>();
         
         for (String correo : correos) {

@@ -27,7 +27,7 @@ public class EliminarInstituciónServlet extends HttpServlet {
         try {
             ProcesadorInstitucion procesadorInstitucion = new ProcesadorInstitucion();
             procesadorInstitucion.chequearYEliminiarInstitucion(request.getParameter("nombre"));
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

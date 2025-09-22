@@ -21,7 +21,7 @@ public class InicioSesionServlet extends HttpServlet {
             ProcesadorUsuario chequeadorUsuario = new ProcesadorUsuario();
             usuario = new Usuario(request.getParameter("correo"), request.getParameter("contraseña"));
             usuario = chequeadorUsuario.chequearInicioSesion(usuario);
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

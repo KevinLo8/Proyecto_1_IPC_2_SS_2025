@@ -9,6 +9,7 @@ import com.proyecto_1.proyecto_1.backend.usuario.Usuario;
 import java.sql.*;
 import java.time.*;
 import java.util.ArrayList;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -17,40 +18,56 @@ import java.util.ArrayList;
 public class Congreso {
 
     private final int numero;
+    private final String descripcion;
     private final LocalDate fecha;
     private final String ubicacion;
+    private final String nombre;
     private final double precio;
     private final int idInstitucion;
+    private final String correoAdministrador;
     private final boolean estadoConvocatoriaTrabajos;
     private ArrayList<Usuario> comite;
+    //private ArrayList<Actividad> actividades;
 
-    public Congreso(int numero, String fecha, String ubicacion, String precio, int idInstitucion, ArrayList<Usuario> comite) throws DataErrorException {
+    public Congreso(int numero, String descripcion, String fecha, String ubicacion, String nombre, String precio, int idInstitucion, String correo,
+            ArrayList<Usuario> comite/*, ArrayList<Actividad> actividades*/) throws DataErrorException {
 
-        revisarData(fecha, ubicacion, precio);
+        revisarData(fecha, descripcion, ubicacion, nombre, precio);
 
         this.numero = numero;
+        this.descripcion = descripcion;
         this.fecha = LocalDate.parse(fecha);
         this.ubicacion = ubicacion;
+        this.nombre = nombre;
         this.precio = Double.parseDouble(precio);
         this.idInstitucion = idInstitucion;
+        this.correoAdministrador = correo;
         this.estadoConvocatoriaTrabajos = false;
         this.comite = comite;
+        //this.actividades = actividades;
     }
 
     public Congreso(ResultSet resultSet) throws SQLException {
         numero = resultSet.getInt("numero");
+        descripcion = resultSet.getString("descripcion");
         fecha = resultSet.getDate("fecha").toLocalDate();
         ubicacion = resultSet.getString("ubicacion");
+        nombre = resultSet.getString("nombre");
         precio = resultSet.getDouble("precio");
         idInstitucion = resultSet.getInt("idInstitucion");
+        correoAdministrador = resultSet.getString("correoAdministrador");
         estadoConvocatoriaTrabajos = resultSet.getBoolean("estadoConvocatoriaTrabajos");
     }
 
-    private void revisarData(String fecha, String ubicacion, String precio) throws DataErrorException {
+    private void revisarData(String fecha, String descripcion, String ubicacion, String nombre, String precio) throws DataErrorException {
         if (!fecha.matches("\\d{4}-\\d{2}-\\d{2}")) {
             throw new DataErrorException("Fecha ingresada invalida");
+        } else if (descripcion.length() > 200) {
+            throw new DataErrorException("Ingrese una ubicación menor a 100 letras");
         } else if (ubicacion.length() > 100) {
             throw new DataErrorException("Ingrese una ubicación menor a 100 letras");
+        } else if (nombre.length() > 150) {
+            throw new DataErrorException("Ingrese una nombre menor a 150 letras");
         }
 
         try {
@@ -62,10 +79,18 @@ public class Congreso {
             throw new DataErrorException("Ingrese un número de precio valido");
         }
 
+        if (StringUtils.isBlank(descripcion) || StringUtils.isBlank(ubicacion) || StringUtils.isBlank(nombre)) {
+            throw new DataErrorException("Llene todos los campos requeridos.");
+        }
+
     }
 
     public int getNumero() {
         return numero;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public LocalDate getFecha() {
@@ -76,12 +101,20 @@ public class Congreso {
         return ubicacion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public double getPrecio() {
         return precio;
     }
 
     public int getIdInstitucion() {
         return idInstitucion;
+    }
+
+    public String getCorreoAdministrador() {
+        return correoAdministrador;
     }
 
     public ArrayList<Usuario> getComite() {
@@ -96,5 +129,14 @@ public class Congreso {
         this.comite = comite;
     }
 
+    /*
+    public ArrayList<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(ArrayList<Actividad> actividades) {
+        this.actividades = actividades;
+    }
+     */
     
 }

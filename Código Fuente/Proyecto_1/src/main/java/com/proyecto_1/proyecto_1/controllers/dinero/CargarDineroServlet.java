@@ -5,7 +5,7 @@
 package com.proyecto_1.proyecto_1.controllers.dinero;
 
 import com.proyecto_1.proyecto_1.backend.db.ClaseDBInformacion;
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
 import java.io.IOException;
 import jakarta.servlet.*;
@@ -38,7 +38,7 @@ public class CargarDineroServlet extends HttpServlet {
             Informacion informacion = databaseInformacion.solicitarInformacionPorCorreo((String) request.getSession().getAttribute("correo"));
             request.setAttribute("informacion", informacion);
 
-        } catch (DatabaseException e) {
+        } catch (DataBaseException e) {
             request.setAttribute("errordb", e.getMessage());
         }
 

@@ -8,9 +8,9 @@ package com.proyecto_1.proyecto_1.backend.exceptions;
  *
  * @author Kevin
  */
-public class DatabaseException extends Exception {
+public class DataBaseException extends Exception {
     
-    public DatabaseException(String mensaje) {
+    public DataBaseException(String mensaje) {
         super(mensaje);
     }
 }

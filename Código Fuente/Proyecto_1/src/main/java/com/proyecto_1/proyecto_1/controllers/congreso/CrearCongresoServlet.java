@@ -25,9 +25,9 @@ public class CrearCongresoServlet extends HttpServlet {
 
         try {
             ProcesadorCongreso procesadorCongreso = new ProcesadorCongreso();
-            procesadorCongreso.chequearYCrearCongreso((String) request.getSession().getAttribute("correo"), request.getParameter("fecha"), request.getParameter("ubicacion"),
-                    request.getParameter("precio"), request.getParameterValues("correoUsuario"));
-        } catch (DataErrorException | DatabaseException e) {
+            procesadorCongreso.chequearYCrearCongreso((String) request.getSession().getAttribute("correo"), request.getParameter("descripcion"), request.getParameter("fecha"), request.getParameter("ubicacion"),
+                    request.getParameter("nombre"), request.getParameter("precio"), request.getParameterValues("correoUsuario"));
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

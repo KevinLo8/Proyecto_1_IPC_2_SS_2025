@@ -28,13 +28,23 @@
                     <form method="POST" action="${pageContext.servletContext.contextPath}/congreso/crear-congreso-servlet">
 
                         <div class="mb-3">
+                            <label class="form-label">Nombre del congreso</label>
+                            <input type="text" class="form-control" name="nombre" minlength="1" maxlength="150" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Ubicación del congreso</label>
+                            <input type="text" class="form-control" name="ubicacion" minlength="1" maxlength="100" required>
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Fecha del congreso</label>
                             <input type="date" class="form-control" name="fecha" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Ubicación de congreso</label>
-                            <input type="text" class="form-control" name="ubicacion" minlength="1" maxlength="100" required>
+                            <label class="form-label">Descripcion del congreso</label>
+                            <textarea  type="text" rows="3"  class="form-control" name="descripcion" minlength="1" maxlength="200" required></textarea>
                         </div>
 
                         <div class="mb-3">

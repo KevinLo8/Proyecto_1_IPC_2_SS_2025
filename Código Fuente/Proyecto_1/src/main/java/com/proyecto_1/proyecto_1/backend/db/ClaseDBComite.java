@@ -5,7 +5,7 @@
 package com.proyecto_1.proyecto_1.backend.db;
 
 import com.proyecto_1.proyecto_1.backend.congreso.Congreso;
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.usuario.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ClaseDBComite {
 
-    public ArrayList<Usuario> solicitarComite(int numero) throws DatabaseException {
+    public ArrayList<Usuario> solicitarComite(int numero) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM comite_cientifico WHERE numeroCongreso = ?";
 
@@ -45,44 +45,44 @@ public class ClaseDBComite {
 
             ProcesadorUsuario procesadorUsuario = new ProcesadorUsuario();
             ArrayList<Usuario> comite = procesadorUsuario.crearArrreglo(arreglo);
-            
+
             return comite;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al consultar el comite");
+            throw new DataBaseException("Error al consultar el comite");
         }
     }
 
-    public void guardarComite(Congreso congreso) throws DatabaseException {
+    public void guardarComite(Congreso congreso) throws DataBaseException {
         ArrayList<Usuario> comite = congreso.getComite();
         int numero = solicitarNumero();
-        
+
         for (Usuario usuario : comite) {
             guardarMiembro(numero, usuario.getCorreoElectronico(), congreso.getNumero());
             numero++;
         }
     }
-    
-    private int solicitarNumero() throws DatabaseException {
-                Connection connection = ConexionDB.getInstance().getConnection();
+
+    private int solicitarNumero() throws DataBaseException {
+        Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM comite_cientifico";
 
         try (Statement statement = connection.createStatement();) {
             ResultSet resultSet = statement.executeQuery(query);
             int numero = 1;
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 numero++;
             }
 
             return numero;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al consultar el numero del comite");
+            throw new DataBaseException("Error al consultar el numero del comite");
         }
     }
-    
-    private void guardarMiembro(int numero, String correoElectronico, int numeroCongreso) throws DatabaseException {
+
+    private void guardarMiembro(int numero, String correoElectronico, int numeroCongreso) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "INSERT INTO comite_cientifico (id, correoMiembro, numeroCongreso) VALUES (?, ?, ?)";
 
@@ -93,10 +93,10 @@ public class ClaseDBComite {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar el miembro del comité.");
+                throw new DataBaseException("Error al registrar el miembro del comité.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear el miembro del comité.");
+            throw new DataBaseException("Error al crear el miembro del comité.");
         }
     }
 

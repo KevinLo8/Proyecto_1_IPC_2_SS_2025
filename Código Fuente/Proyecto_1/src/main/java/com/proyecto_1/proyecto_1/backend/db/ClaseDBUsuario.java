@@ -1,6 +1,6 @@
 package com.proyecto_1.proyecto_1.backend.db;
 
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
 import java.sql.*;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ClaseDBUsuario {
 
-    public Usuario solicitarUsuario(String correo) throws DatabaseException {
+    public Usuario solicitarUsuario(String correo) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM usuario WHERE correoElectronico = ?";
 
@@ -24,29 +24,29 @@ public class ClaseDBUsuario {
             return usuario;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al consultar el usuario");
+            throw new DataBaseException("Error al consultar el usuario");
         }
     }
 
-    public ArrayList<Usuario> solicitarUsuariosEInformacion() throws DatabaseException {
+    public ArrayList<Usuario> solicitarUsuariosEInformacion() throws DataBaseException {
         String query = "SELECT * FROM usuario LEFT JOIN informacion ON correoElectronico = correoUsuario;";
         ArrayList<Usuario> usuarios = ejecutarQueryUsuariosEInformacion(query);
         return usuarios;
     }
 
-    public ArrayList<Usuario> solicitarUsuariosParaAdministradorCongreso() throws DatabaseException {
+    public ArrayList<Usuario> solicitarUsuariosParaAdministradorCongreso() throws DataBaseException {
         String query = "SELECT * FROM usuario JOIN informacion ON correoElectronico = correoUsuario WHERE habilitacionAdministradorCongreso = 0 AND estadoActivacion = 1;";
         ArrayList<Usuario> usuarios = ejecutarQueryUsuariosEInformacion(query);
         return usuarios;
     }
 
-    public ArrayList<Usuario> solicitarUsuariosActivos() throws DatabaseException {
+    public ArrayList<Usuario> solicitarUsuariosActivos() throws DataBaseException {
         String query = "SELECT * FROM usuario JOIN informacion ON correoElectronico = correoUsuario WHERE estadoActivacion = 1;";
         ArrayList<Usuario> usuarios = ejecutarQueryUsuariosEInformacion(query);
         return usuarios;
     }
 
-    private ArrayList<Usuario> ejecutarQueryUsuariosEInformacion(String query) throws DatabaseException {
+    private ArrayList<Usuario> ejecutarQueryUsuariosEInformacion(String query) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
 
         try (Statement statement = connection.createStatement();) {
@@ -64,12 +64,12 @@ public class ClaseDBUsuario {
             return usuarios;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al consultar los usuarios");
+            throw new DataBaseException("Error al consultar los usuarios");
         }
 
     }
 
-    public ArrayList solicitarAdministradoresSistema() throws DatabaseException {
+    public ArrayList solicitarAdministradoresSistema() throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM usuario WHERE habilitacionAdministradorSistema = 1";
 
@@ -86,11 +86,11 @@ public class ClaseDBUsuario {
             return Administradores;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al consultar el usuario");
+            throw new DataBaseException("Error al consultar el usuario");
         }
     }
 
-    public void crearUsuario(Usuario usuario) throws DatabaseException {
+    public void crearUsuario(Usuario usuario) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "INSERT INTO usuario (correoElectronico, contraseña) VALUES (?, ?)";
 
@@ -100,14 +100,14 @@ public class ClaseDBUsuario {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar el usuario.");
+                throw new DataBaseException("Error al registrar el usuario.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear el usuario.");
+            throw new DataBaseException("Error al crear el usuario.");
         }
     }
 
-    public void crearAdminSistema(Usuario usuario) throws DatabaseException {
+    public void crearAdminSistema(Usuario usuario) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE usuario SET habilitacionAdministradorSistema = 1 WHERE correoElectronico = ?";
 
@@ -116,14 +116,14 @@ public class ClaseDBUsuario {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar el administrador de sistema.");
+                throw new DataBaseException("Error al registrar el administrador de sistema.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear el administrador de sistema.");
+            throw new DataBaseException("Error al crear el administrador de sistema.");
         }
     }
 
-    public void crearAdminCongreso(Usuario usuario) throws DatabaseException {
+    public void crearAdminCongreso(Usuario usuario) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE usuario SET habilitacionAdministradorCongreso = 1 WHERE correoElectronico = ?";
 
@@ -132,14 +132,14 @@ public class ClaseDBUsuario {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar el administrador de congreso.");
+                throw new DataBaseException("Error al registrar el administrador de congreso.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear el administrador de congreso.");
+            throw new DataBaseException("Error al crear el administrador de congreso.");
         }
     }
 
-    public void cambiarContraseña(Usuario usuario) throws DatabaseException {
+    public void cambiarContraseña(Usuario usuario) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE usuario SET contraseña = ? WHERE correoElectronico = ?";
 
@@ -149,10 +149,10 @@ public class ClaseDBUsuario {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al modificar la contraseña del usuario..");
+                throw new DataBaseException("Error al modificar la contraseña del usuario..");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al cambiar la contraseña del usuario.");
+            throw new DataBaseException("Error al cambiar la contraseña del usuario.");
         }
 
     }

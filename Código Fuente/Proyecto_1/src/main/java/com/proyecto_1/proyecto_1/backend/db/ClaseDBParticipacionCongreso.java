@@ -5,9 +5,9 @@
 package com.proyecto_1.proyecto_1.backend.db;
 
 import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataErrorException;
 import com.proyecto_1.proyecto_1.backend.participacionCongreso.ParticipacionCongreso;
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ClaseDBParticipacionCongreso {
 
-    public ParticipacionCongreso solicitarParticipacion(String correo, int numeroCongreso, String tipoTrabajo) throws DataBaseException {
+    public ParticipacionCongreso solicitarParticipacion(String correo, int numeroCongreso, String tipoTrabajo) throws DataBaseException, DataErrorException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM participacion_congreso WHERE correoUsuario = ? AND numeroCongreso = ? AND tipo = ?";
 

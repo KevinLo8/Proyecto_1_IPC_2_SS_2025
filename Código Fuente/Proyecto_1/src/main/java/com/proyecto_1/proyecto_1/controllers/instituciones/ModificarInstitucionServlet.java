@@ -5,7 +5,7 @@
 package com.proyecto_1.proyecto_1.controllers.instituciones;
 
 import com.proyecto_1.proyecto_1.backend.exceptions.DataErrorException;
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.institucion.ProcesadorInstitucion;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class ModificarInstitucionServlet extends HttpServlet {
         try {
             ProcesadorInstitucion procesadorInstitucion = new ProcesadorInstitucion();
             procesadorInstitucion.chequearYModificarInstitucion(request.getParameter("nombre"), request.getParameter("nombreNuevo"));
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

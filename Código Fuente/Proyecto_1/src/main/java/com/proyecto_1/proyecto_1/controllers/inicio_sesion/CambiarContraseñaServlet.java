@@ -29,7 +29,7 @@ public class CambiarContraseñaServlet extends HttpServlet {
             ProcesadorUsuario chequeadorUsuario = new ProcesadorUsuario();
             chequeadorUsuario.chequearCambioContraseña((String) request.getSession().getAttribute("correo"), request.getParameter("contraseñaVieja"),
                     request.getParameter("contraseñaNueva"));
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

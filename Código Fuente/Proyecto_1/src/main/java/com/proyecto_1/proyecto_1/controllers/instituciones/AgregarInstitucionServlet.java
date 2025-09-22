@@ -27,7 +27,7 @@ public class AgregarInstitucionServlet extends HttpServlet {
         try {
             ProcesadorInstitucion procesadorInstitucion = new ProcesadorInstitucion();
             procesadorInstitucion.crearYGuardarInstitucion(request.getParameter("nombre"));
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

@@ -14,7 +14,7 @@ import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
  */
 public class ProcesadorDinero {
     
-    public void AgregarDinero(String dinero, String correo) throws DataErrorException, DatabaseException {
+    public void AgregarDinero(String dinero, String correo) throws DataErrorException, DataBaseException {
         ClaseDBInformacion database = new ClaseDBInformacion();
         
         Informacion informacion = database.solicitarInformacionPorCorreo(correo);

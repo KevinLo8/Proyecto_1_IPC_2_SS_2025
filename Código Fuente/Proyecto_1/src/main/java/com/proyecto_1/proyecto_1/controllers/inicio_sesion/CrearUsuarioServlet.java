@@ -20,7 +20,7 @@ public class CrearUsuarioServlet extends HttpServlet {
             ProcesadorUsuario chequeadorUsuario = new ProcesadorUsuario();
             Usuario usuario = new Usuario(request.getParameter("correo"), request.getParameter("contraseña"));
             chequeadorUsuario.chequearYCrearUsuario(usuario);
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

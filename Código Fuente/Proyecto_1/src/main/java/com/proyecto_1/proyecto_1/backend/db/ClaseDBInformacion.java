@@ -4,7 +4,7 @@
  */
 package com.proyecto_1.proyecto_1.backend.db;
 
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
 import java.sql.*;
 
@@ -14,33 +14,33 @@ import java.sql.*;
  */
 public class ClaseDBInformacion {
 
-    public Informacion solicitarInformacionPorIdentificacion(String identificacion) throws DatabaseException {
+    public Informacion solicitarInformacionPorIdentificacion(String identificacion) throws DataBaseException {
         String query = "SELECT * FROM informacion WHERE numeroIdentificacion = ?";
         Informacion informacion = solicitarInformacion(query, identificacion);
 
         return informacion;
     }
 
-    public Informacion solicitarInformacionPorUsuario(String usuario) throws DatabaseException {
+    public Informacion solicitarInformacionPorUsuario(String usuario) throws DataBaseException {
         String query = "SELECT * FROM informacion WHERE nombre = ?";
         Informacion informacion = solicitarInformacion(query, usuario);
 
         return informacion;
     }
 
-    public Informacion solicitarInformacionPorCorreo(String correo) throws DatabaseException {
+    public Informacion solicitarInformacionPorCorreo(String correo) throws DataBaseException {
         String query = "SELECT * FROM informacion WHERE correoUsuario = ?";
         Informacion informacion = solicitarInformacion(query, correo);
 
         return informacion;
     }
 
-    public int solicitarInstitucionDeUsuario(String correo) throws DatabaseException {
+    public int solicitarInstitucionDeUsuario(String correo) throws DataBaseException {
         Informacion informacion = solicitarInformacionPorCorreo(correo);
         return informacion.getIdInstitución();
     }
 
-    private Informacion solicitarInformacion(String query, String data) throws DatabaseException {
+    private Informacion solicitarInformacion(String query, String data) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);) {
@@ -54,12 +54,12 @@ public class ClaseDBInformacion {
             return informacion;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al solicitar la información");
+            throw new DataBaseException("Error al solicitar la información");
         }
 
     }
 
-    public void crearInformacion(Informacion informacion) throws DatabaseException {
+    public void crearInformacion(Informacion informacion) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "INSERT INTO informacion (numeroIdentificacion, nombre, idIntitucion, numeroTelefono, correoUsuario) VALUES (?, ?, ?, ?, ?)";
 
@@ -72,14 +72,14 @@ public class ClaseDBInformacion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar la información.");
+                throw new DataBaseException("Error al registrar la información.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear la información.");
+            throw new DataBaseException("Error al crear la información.");
         }
     }
 
-    public void actualizarInformacion(Informacion informacion) throws DatabaseException {
+    public void actualizarInformacion(Informacion informacion) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE informacion SET nombre = ?, idIntitucion = ?, numeroTelefono = ? WHERE numeroIdentificacion = ?";
 
@@ -91,14 +91,14 @@ public class ClaseDBInformacion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al modificar la información.");
+                throw new DataBaseException("Error al modificar la información.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al actualizar la información.");
+            throw new DataBaseException("Error al actualizar la información.");
         }
     }
 
-    public void modificarDinero(Informacion informacion, double cantidadDinero) throws DatabaseException {
+    public void modificarDinero(Informacion informacion, double cantidadDinero) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE informacion SET saldo = ? WHERE numeroIdentificacion = ?";
 
@@ -108,10 +108,10 @@ public class ClaseDBInformacion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al cambiar el dinero.");
+                throw new DataBaseException("Error al cambiar el dinero.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al modificar el dinero.");
+            throw new DataBaseException("Error al modificar el dinero.");
         }
     }
 

@@ -5,7 +5,7 @@
 package com.proyecto_1.proyecto_1.controllers.instituciones;
 
 import com.proyecto_1.proyecto_1.backend.db.ClaseDBInstitucion;
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.institucion.Institucion;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -39,7 +39,7 @@ public class ListadoDeInstitucionesServlet extends HttpServlet {
         try {
             instituciones = database.solicitarInstituciones(0);
             request.setAttribute("instituciones", instituciones);
-        } catch (DatabaseException e) {
+        } catch (DataBaseException e) {
             request.setAttribute("errordb", e.getMessage());
         }
 

@@ -29,7 +29,7 @@ public class AgregarDineroServlet extends HttpServlet {
             ProcesadorDinero procesadorDinero = new ProcesadorDinero();
             procesadorDinero.AgregarDinero(request.getParameter("dinero"), (String) request.getSession().getAttribute("correo"));
 
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

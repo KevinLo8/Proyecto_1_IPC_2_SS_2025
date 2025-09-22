@@ -4,7 +4,7 @@
  */
 package com.proyecto_1.proyecto_1.backend.db;
 
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.institucion.Institucion;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ClaseDBInstitucion {
 
-    public Institucion solicitarInstitucion(String nombre) throws DatabaseException {
+    public Institucion solicitarInstitucion(String nombre) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM institucion WHERE nombre = ?";
         ResultSet resultSet = null;
@@ -31,11 +31,11 @@ public class ClaseDBInstitucion {
             return institucion;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al solicitar la institución");
+            throw new DataBaseException("Error al solicitar la institución");
         }
     }
 
-    public ArrayList<Institucion> solicitarInstituciones(int numero) throws DatabaseException {
+    public ArrayList<Institucion> solicitarInstituciones(int numero) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM institucion where id > ?";
         ResultSet resultSet = null;
@@ -53,16 +53,16 @@ public class ClaseDBInstitucion {
             return instituciones;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al solicitar las instituciones");
+            throw new DataBaseException("Error al solicitar las instituciones");
         }
     }
 
-    public int solicitarNumeroId() throws DatabaseException {
+    public int solicitarNumeroId() throws DataBaseException {
         ArrayList<Institucion> instituciones = solicitarInstituciones(0);
         return instituciones.size() + 1;
     }
 
-    public void crearInstitucion(Institucion institucion) throws DatabaseException {
+    public void crearInstitucion(Institucion institucion) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "INSERT INTO institucion (id, nombre) VALUES (?, ?)";
 
@@ -72,14 +72,14 @@ public class ClaseDBInstitucion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar la institución.");
+                throw new DataBaseException("Error al registrar la institución.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear la institución.");
+            throw new DataBaseException("Error al crear la institución.");
         }
     }
 
-    public void modificarNombre(Institucion institucion, String nombreNuevo) throws DatabaseException {
+    public void modificarNombre(Institucion institucion, String nombreNuevo) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE institucion SET nombre = ? WHERE id = ?";
 
@@ -89,15 +89,15 @@ public class ClaseDBInstitucion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al intentar modificar el nombre de la institución.");
+                throw new DataBaseException("Error al intentar modificar el nombre de la institución.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al modificar el nombre de la institución.");
+            throw new DataBaseException("Error al modificar el nombre de la institución.");
         }
 
     }
 
-    public void modificarNumero(Institucion institucion, int numero) throws DatabaseException {
+    public void modificarNumero(Institucion institucion, int numero) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE institucion SET id = ? WHERE id = ?";
 
@@ -107,15 +107,15 @@ public class ClaseDBInstitucion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al intentar modificar el numero de la institución.");
+                throw new DataBaseException("Error al intentar modificar el numero de la institución.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al modificar el numero de la institución.");
+            throw new DataBaseException("Error al modificar el numero de la institución.");
         }
 
     }
 
-    public void eliminarInstitucion(Institucion institucion) throws DatabaseException {
+    public void eliminarInstitucion(Institucion institucion) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "DELETE FROM institucion WHERE id = ?";
 
@@ -124,10 +124,10 @@ public class ClaseDBInstitucion {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al intentar eliminar la institución.");
+                throw new DataBaseException("Error al intentar eliminar la institución.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al eliminar la institución.");
+            throw new DataBaseException("Error al eliminar la institución.");
         }
 
     }

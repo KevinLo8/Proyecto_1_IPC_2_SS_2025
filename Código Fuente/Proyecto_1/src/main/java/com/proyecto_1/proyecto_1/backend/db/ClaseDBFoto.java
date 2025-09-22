@@ -4,7 +4,7 @@
  */
 package com.proyecto_1.proyecto_1.backend.db;
 
-import com.proyecto_1.proyecto_1.backend.exceptions.DatabaseException;
+import com.proyecto_1.proyecto_1.backend.exceptions.DataBaseException;
 import com.proyecto_1.proyecto_1.backend.foto.Foto;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,14 +15,13 @@ import java.util.ArrayList;
  */
 public class ClaseDBFoto {
 
-    public Foto solicitarFoto(String identificacion) throws DatabaseException {
+    public Foto solicitarFoto(String identificacion) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM foto WHERE identificacionUsuario = ?";
-        ResultSet resultSet = null;
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, identificacion);
-            resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             Foto foto = null;
             if (resultSet.next()) {
@@ -31,18 +30,16 @@ public class ClaseDBFoto {
             return foto;
 
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DatabaseException("Error al solicitar la foto");
+            throw new DataBaseException("Error al solicitar la foto");
         }
     }
 
-    public int solicitarIDFoto() throws DatabaseException {
+    public int solicitarIDFoto() throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "SELECT * FROM foto";
-        ResultSet resultSet = null;
 
         try (Statement statement = connection.createStatement()) {
-            resultSet = statement.executeQuery(query);
+            ResultSet resultSet = statement.executeQuery(query);
             ArrayList<Foto> fotos = new ArrayList<>();
 
             while (resultSet.next()) {
@@ -53,11 +50,11 @@ public class ClaseDBFoto {
             return fotos.size() + 1;
 
         } catch (SQLException e) {
-            throw new DatabaseException("Error al solicitar el id de la foto");
+            throw new DataBaseException("Error al solicitar el id de la foto");
         }
     }
 
-    public void crearFoto(Foto foto) throws DatabaseException {
+    public void crearFoto(Foto foto) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "INSERT INTO foto (id, identificacionUsuario, foto, nombre, tipo, tamaño) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -71,14 +68,14 @@ public class ClaseDBFoto {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al registrar la foto.");
+                throw new DataBaseException("Error al registrar la foto.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al crear la foto.");
+            throw new DataBaseException("Error al crear la foto.");
         }
     }
 
-    public void actualizarFoto(Foto foto) throws DatabaseException {
+    public void actualizarFoto(Foto foto) throws DataBaseException {
         Connection connection = ConexionDB.getInstance().getConnection();
         String query = "UPDATE foto SET foto = ?, nombre = ?, tipo = ?, tamaño = ? WHERE identificacionUsuario = ?";
 
@@ -91,10 +88,10 @@ public class ClaseDBFoto {
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
-                throw new DatabaseException("Error al modificar la foto.");
+                throw new DataBaseException("Error al modificar la foto.");
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Error al actualizar la foto.");
+            throw new DataBaseException("Error al actualizar la foto.");
         }
     }
 

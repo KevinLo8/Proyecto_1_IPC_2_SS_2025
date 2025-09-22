@@ -16,7 +16,7 @@
             </a>
         </div> 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"> 
-            <li><a href="#" class="nav-link px-2">Congresos</a></li> 
+            <li><a href="${pageContext.servletContext.contextPath}/congreso/listado-congresos-servlet" class="nav-link px-2">Congresos</a></li> 
             <li><a href="#" class="nav-link px-2">Actividades</a></li> 
             <li><a href="#" class="nav-link px-2">Acerca De</a></li>
         </ul> 
@@ -46,6 +46,7 @@
 
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/congreso/formulario-congreso-servlet">Crear Congreso</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/congreso/congresos-creados-servlet">Administrar Congresos creados</a></li>
 
                         </c:if>
 

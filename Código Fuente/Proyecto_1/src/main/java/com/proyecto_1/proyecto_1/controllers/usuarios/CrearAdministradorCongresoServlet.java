@@ -26,7 +26,7 @@ public class CrearAdministradorCongresoServlet extends HttpServlet {
         try {
             ProcesadorUsuario procesadorUsuario = new ProcesadorUsuario();
             procesadorUsuario.chequearYCrearAdminitradorCongreso(request.getParameter("correoUsuario"));
-        } catch (DataErrorException | DatabaseException e) {
+        } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
 

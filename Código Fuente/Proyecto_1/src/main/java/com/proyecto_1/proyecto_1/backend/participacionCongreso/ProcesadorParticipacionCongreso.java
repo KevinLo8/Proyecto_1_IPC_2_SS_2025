@@ -69,7 +69,7 @@ public class ProcesadorParticipacionCongreso {
         return congreso;
     }
 
-    private void crearParticipacion(ParticipacionCongreso participacion) throws DataBaseException {
+    private void crearParticipacion(ParticipacionCongreso participacion) throws DataBaseException, DataErrorException {
         database.guardarParticipacion(participacion);
         participacion = database.solicitarParticipacion(participacion.getCorreoUsuario(), participacion.getNumeroCongreso(), participacion.getTipoTrabajo().toString());
         database.cambiarEstadoRevision(participacion);

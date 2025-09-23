@@ -46,22 +46,26 @@ public class ProcesadorCongreso {
 
     }
 
-    public void cambiarEstadoConvocarotia(String numeroString) throws DataErrorException, DataBaseException {
+    public void cambiarEstadoConvocarotia(String correo, String numeroString) throws DataErrorException, DataBaseException {
+        Congreso congreso = verificarCongreso(correo, numeroString);
+        database.cambiarEstadoConvocatoria(congreso);
+    }
 
+    public Congreso verificarCongreso(String correo, String numeroCongreso) throws DataErrorException, DataBaseException {
         int numero = 0;
         try {
-            numero = Integer.parseInt(numeroString);
+            numero = Integer.parseInt(numeroCongreso);
         } catch (NumberFormatException e) {
             throw new DataErrorException("numero de congreso invalido");
         }
+        
         Congreso congreso = database.solicitarCongreso(numero);
-
         if (congreso == null) {
-            throw new DataErrorException("No existe un congreso con el numero seleccionado");
+            throw new DataErrorException("No existe un congreso con el número enviado");
+        } else if (!congreso.getCorreoAdministrador().equals(correo)) {
+            throw new DataErrorException("El congreso enviado no es administrado por este usuario.");
         }
-
-        database.cambiarEstadoConvocatoria(congreso);
-
+        return congreso;
     }
 
 }

@@ -24,7 +24,7 @@ public class CambiarEstadoConvocatoriaServlet extends HttpServlet {
         ProcesadorCongreso procesadorCongreso = new ProcesadorCongreso();
 
         try {
-            procesadorCongreso.cambiarEstadoConvocarotia(request.getParameter("numero"));
+            procesadorCongreso.cambiarEstadoConvocarotia((String) request.getSession().getAttribute("correo"), request.getParameter("numero"));
             request.setAttribute("mensaje", "Se a cambiado el estado de la convocatoria exitosamente");
         } catch (DataBaseException | DataErrorException e) {
             request.setAttribute("error", e.getMessage());

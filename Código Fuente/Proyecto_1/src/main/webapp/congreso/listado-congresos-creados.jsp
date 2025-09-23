@@ -74,7 +74,7 @@
                                                                     Abrir Convocatoria De Trabajos
                                                                 </a>
                                                             </c:if>
-                                                            <a type="button" class="dropdown-item">Visualizar Salones</a>
+                                                            <a type="button" class="dropdown-item" href="../salon/listado-salones-servlet?numero=${congreso.numero}">Administrar Salones</a>
                                                         </ul>
                                                     </div>
                                                 </div>

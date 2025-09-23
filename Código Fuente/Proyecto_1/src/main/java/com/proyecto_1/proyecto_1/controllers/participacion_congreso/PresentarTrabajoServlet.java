@@ -34,10 +34,11 @@ public class PresentarTrabajoServlet extends HttpServlet {
 
         RequestDispatcher disparcher = null;
         if (StringUtils.isBlank(error)) {
-            disparcher = request.getRequestDispatcher("/trabajo/presentar-trabajo-completado.jsp");
+            request.getSession().setAttribute("tieneTrabajos", true);
+            disparcher = request.getRequestDispatcher("presentar-trabajo-completado.jsp");
         } else {
             request.setAttribute("error", error);
-            disparcher = request.getRequestDispatcher("/trabajo/presentar-trabajo.jsp");
+            disparcher = request.getRequestDispatcher("presentar-trabajo.jsp");
         }
         disparcher.forward(request, response);
 

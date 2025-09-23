@@ -8,6 +8,7 @@ import com.proyecto_1.proyecto_1.backend.congreso.Congreso;
 import com.proyecto_1.proyecto_1.backend.db.*;
 import com.proyecto_1.proyecto_1.backend.exceptions.*;
 import com.proyecto_1.proyecto_1.backend.informacion.Informacion;
+import java.util.ArrayList;
 
 /**
  *
@@ -69,9 +70,15 @@ public class ProcesadorParticipacionCongreso {
         return congreso;
     }
 
+    public boolean revisarTieneTrabajos(String correoElectronico) throws DataBaseException, DataErrorException {
+        ArrayList<ParticipacionCongreso> trabajos = database.solicitarTrabajos(correoElectronico);
+        return !trabajos.isEmpty();
+    }
+
     private void crearParticipacion(ParticipacionCongreso participacion) throws DataBaseException, DataErrorException {
         database.guardarParticipacion(participacion);
         participacion = database.solicitarParticipacion(participacion.getCorreoUsuario(), participacion.getNumeroCongreso(), participacion.getTipoTrabajo().toString());
         database.cambiarEstadoRevision(participacion);
     }
+
 }

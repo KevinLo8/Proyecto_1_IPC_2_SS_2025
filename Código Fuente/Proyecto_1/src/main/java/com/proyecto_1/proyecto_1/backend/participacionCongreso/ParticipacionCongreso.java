@@ -24,7 +24,7 @@ public class ParticipacionCongreso {
         this.numero = 0;
         this.correoUsuario = correoUsuario;
         this.numeroCongreso = Integer.parseInt(numeroCongreso);
-        this.tipoTrabajo = retornarTipoTrabajo(tipoTrabajo);
+        this.tipoTrabajo = retornarTipoTrabajo(tipoTrabajo.toUpperCase());
         this.estadoRevision = false;
     }
     
@@ -39,13 +39,13 @@ public class ParticipacionCongreso {
     private TipoParticipacionCongreso retornarTipoTrabajo(String tipoTrabajo) throws DataErrorException {
         TipoParticipacionCongreso tipo = null;
         switch (tipoTrabajo) {
-            case "Asistente" ->
+            case "ASISTENTE" ->
                 tipo = TipoParticipacionCongreso.ASISTENTE;
-            case "Ponente" ->
+            case "PONENTE" ->
                 tipo = TipoParticipacionCongreso.PONENTE;
-            case "Tallerista" ->
+            case "TALLERISTA" ->
                 tipo = TipoParticipacionCongreso.TALLERISTA;
-            case "Invitado" ->
+            case "INVITADO" ->
                 tipo = TipoParticipacionCongreso.INVITADO;
             default ->
                 throw new DataErrorException("El tipo de Participación selecionado es invalido");

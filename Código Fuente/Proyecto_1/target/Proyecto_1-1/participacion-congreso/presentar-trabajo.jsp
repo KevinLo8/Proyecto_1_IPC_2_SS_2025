@@ -22,7 +22,7 @@
 
 
             <div class="pb-5 offset-2 col-8">
-                <form method="POST" action="${pageContext.servletContext.contextPath}/trabajo/presentar-trabajo-servlet">
+                <form method="POST" action="presentar-trabajo-servlet">
 
                     <div>
                         <p></p>

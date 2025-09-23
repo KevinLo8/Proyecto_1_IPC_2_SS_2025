@@ -6,6 +6,8 @@ package com.proyecto_1.proyecto_1.backend.congreso;
 
 import com.proyecto_1.proyecto_1.backend.db.*;
 import com.proyecto_1.proyecto_1.backend.exceptions.*;
+import com.proyecto_1.proyecto_1.backend.participacionCongreso.ParticipacionCongreso;
+import com.proyecto_1.proyecto_1.backend.salon.*;
 import com.proyecto_1.proyecto_1.backend.usuario.*;
 import java.util.ArrayList;
 
@@ -66,6 +68,30 @@ public class ProcesadorCongreso {
             throw new DataErrorException("El congreso enviado no es administrado por este usuario.");
         }
         return congreso;
+    }
+
+    public ArrayList<Congreso> crearListaCongresos(ArrayList<ParticipacionCongreso> trabajos) throws DataBaseException {
+        ArrayList<Congreso> congresos = new ArrayList<>();
+        
+        for (ParticipacionCongreso trabajo : trabajos) {
+            if (!existeCongreso(trabajo.getNumeroCongreso(), congresos)) {
+                Congreso congreso = database.solicitarCongreso(trabajo.getNumeroCongreso());                
+                congresos.add(congreso);
+            }
+        }
+        
+        return congresos;
+    }
+
+    private boolean existeCongreso(int numeroCongreso, ArrayList<Congreso> congresos) {
+        
+        for (Congreso congreso : congresos) {
+            if (congreso.getNumero() == numeroCongreso) {
+                return true;
+            }
+        }
+        return false;
+        
     }
 
 }

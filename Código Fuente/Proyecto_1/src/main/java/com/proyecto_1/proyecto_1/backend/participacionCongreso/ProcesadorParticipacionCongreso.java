@@ -26,12 +26,8 @@ public class ProcesadorParticipacionCongreso {
 
         ParticipacionCongreso participacion = new ParticipacionCongreso(correo, numero, tipo);
 
-        ClaseDBCongreso databaseCongreso = new ClaseDBCongreso();
-        Congreso congreso = databaseCongreso.solicitarCongreso(participacion.getNumeroCongreso());
-        if (congreso == null) {
-            throw new DataErrorException("No existe un congreso con el número enviado");
-        }
-
+        revisarCongreso(correo, numero, tipo);
+        
         ParticipacionCongreso participacionTemp = database.solicitarParticipacion(correo, participacion.getNumeroCongreso(), participacion.getTipoTrabajo().toString());
         if (participacionTemp != null) {
             throw new DataErrorException("Ya ha presentado este tipo de trabajo en el congreso enviado");
@@ -42,7 +38,6 @@ public class ProcesadorParticipacionCongreso {
 
     public Congreso chequearYAgregarAsistencia(String correo, String numero) throws DataErrorException, DataBaseException {
         ClaseDBInformacion databaseInformacion = new ClaseDBInformacion();
-        ClaseDBCongreso databaseCongreso = new ClaseDBCongreso();
         ParticipacionCongreso participacion = new ParticipacionCongreso(correo, numero, "Asistente");
 
         Informacion informacion = databaseInformacion.solicitarInformacionPorCorreo(correo);
@@ -50,10 +45,7 @@ public class ProcesadorParticipacionCongreso {
             throw new DataErrorException("El usuario no ha agregado información de perfil, llenar antes de participar en un congreso.");
         }
 
-        Congreso congreso = databaseCongreso.solicitarCongreso(participacion.getNumeroCongreso());
-        if (congreso == null) {
-            throw new DataErrorException("No existe un congreso con el número enviado.");
-        }
+        Congreso congreso = revisarCongreso(correo, numero, "Asistente");
 
         if (congreso.getPrecio() > informacion.getDinero()) {
             throw new DataErrorException("El usuario no posee el dinero suficiente para participar en el congreso.");
@@ -70,9 +62,28 @@ public class ProcesadorParticipacionCongreso {
         return congreso;
     }
 
+    public ArrayList<ParticipacionCongreso> solicitarTrabajos(String correoElectronico) throws DataBaseException, DataErrorException {
+        return database.solicitarTrabajos(correoElectronico);
+    }
+
+    public ArrayList<ParticipacionCongreso> solicitarTrabajosPorCongreso(String correoElectronico, String numeroCongreso) throws DataBaseException, DataErrorException {
+        revisarCongreso(correoElectronico, numeroCongreso, "Asistente");
+        return database.solicitarTrabajosPorCongreso(correoElectronico, Integer.parseInt(numeroCongreso));
+    }
+
     public boolean revisarTieneTrabajos(String correoElectronico) throws DataBaseException, DataErrorException {
-        ArrayList<ParticipacionCongreso> trabajos = database.solicitarTrabajos(correoElectronico);
-        return !trabajos.isEmpty();
+        return !solicitarTrabajos(correoElectronico).isEmpty();
+    }
+
+    private Congreso revisarCongreso(String correo, String numero, String tipo) throws DataErrorException, DataBaseException {
+        ClaseDBCongreso databaseCongreso = new ClaseDBCongreso();
+        ParticipacionCongreso participacion = new ParticipacionCongreso(correo, numero, tipo);
+
+        Congreso congreso = databaseCongreso.solicitarCongreso(participacion.getNumeroCongreso());
+        if (congreso == null) {
+            throw new DataErrorException("No existe un congreso con el número enviado.");
+        }
+        return congreso;
     }
 
     private void crearParticipacion(ParticipacionCongreso participacion) throws DataBaseException, DataErrorException {

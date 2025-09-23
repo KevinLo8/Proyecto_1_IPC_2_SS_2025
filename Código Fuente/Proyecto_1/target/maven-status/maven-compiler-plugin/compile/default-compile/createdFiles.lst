@@ -1,3 +1,4 @@
+com\proyecto_1\proyecto_1\backend\db\ClaseDBActividad.class
 com\proyecto_1\proyecto_1\backend\institucion\Institucion.class
 com\proyecto_1\proyecto_1\backend\institucion\ProcesadorInstitucion.class
 com\proyecto_1\proyecto_1\backend\usuario\ProcesadorUsuario.class
@@ -14,6 +15,7 @@ com\proyecto_1\proyecto_1\controllers\congreso\CambiarEstadoConvocatoriaServlet.
 com\proyecto_1\proyecto_1\backend\exceptions\DataErrorException.class
 com\proyecto_1\proyecto_1\controllers\usuarios\CrearAdministradorCongresoServlet.class
 com\proyecto_1\proyecto_1\backend\informacion\ProcesadorInformacion.class
+com\proyecto_1\proyecto_1\backend\actividad\TipoActividad.class
 com\proyecto_1\proyecto_1\backend\participacionCongreso\ProcesadorParticipacionCongreso.class
 com\proyecto_1\proyecto_1\controllers\congreso\CongresosCreadosServlet.class
 com\proyecto_1\proyecto_1\backend\exceptions\ConsultaException.class
@@ -24,12 +26,14 @@ com\proyecto_1\proyecto_1\controllers\participacion_congreso\PresentarTrabajoSer
 com\proyecto_1\proyecto_1\controllers\informacion\CargarInformacionServlet.class
 com\proyecto_1\proyecto_1\backend\foto\Foto.class
 com\proyecto_1\proyecto_1\controllers\informacion\GuardarInformacionServlet.class
+com\proyecto_1\proyecto_1\backend\actividad\Actividad.class
 com\proyecto_1\proyecto_1\backend\db\ClaseDBInformacion.class
 com\proyecto_1\proyecto_1\backend\db\ClaseDBSalon.class
 com\proyecto_1\proyecto_1\controllers\instituciones\ListadoDeInstitucionesServlet.class
 com\proyecto_1\proyecto_1\backend\congreso\Congreso.class
 com\proyecto_1\proyecto_1\controllers\inicio_sesion\CerrarSesionServlet.class
 com\proyecto_1\proyecto_1\backend\participacionCongreso\TipoParticipacionCongreso.class
+com\proyecto_1\proyecto_1\backend\actividad\ProcesadorActividad.class
 com\proyecto_1\proyecto_1\backend\db\ClaseDBUsuario.class
 com\proyecto_1\proyecto_1\backend\salon\ProcesadorSalon.class
 com\proyecto_1\proyecto_1\backend\db\ClaseDBInstitucion.class
@@ -37,11 +41,13 @@ com\proyecto_1\proyecto_1\backend\usuario\Usuario.class
 com\proyecto_1\proyecto_1\backend\participacionCongreso\ParticipacionCongreso.class
 com\proyecto_1\proyecto_1\controllers\congreso\FormularioCongresoServlet.class
 com\proyecto_1\proyecto_1\controllers\dinero\AgregarDineroServlet.class
+com\proyecto_1\proyecto_1\controllers\actividad\CrearActividadServlet.class
 com\proyecto_1\proyecto_1\backend\congreso\ProcesadorCongreso.class
 com\proyecto_1\proyecto_1\controllers\inicio_sesion\CrearUsuarioServlet.class
 com\proyecto_1\proyecto_1\backend\db\ClaseDBComite.class
 com\proyecto_1\proyecto_1\controllers\salon\AgregarSalonServlet.class
 com\proyecto_1\proyecto_1\controllers\usuarios\ListadoUsuariosServlet.class
+com\proyecto_1\proyecto_1\controllers\actividad\FormularioActividadServlet.class
 com\proyecto_1\proyecto_1\controllers\salon\ModificarSalonServlet.class
 com\proyecto_1\proyecto_1\backend\db\ClaseDBCongreso.class
 com\proyecto_1\proyecto_1\controllers\salon\EliminarSalonServlet.class

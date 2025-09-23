@@ -53,7 +53,7 @@
                         <c:if test="${tieneTrabajos == true}">
 
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Agregar Actividad</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/actividad/formulario-actividad-servlet">Agregar Actividad</a></li>
 
                         </c:if>
 

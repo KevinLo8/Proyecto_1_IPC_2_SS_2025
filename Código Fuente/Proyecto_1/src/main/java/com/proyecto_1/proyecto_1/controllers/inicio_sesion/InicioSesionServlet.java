@@ -1,6 +1,7 @@
 package com.proyecto_1.proyecto_1.controllers.inicio_sesion;
 
 import com.proyecto_1.proyecto_1.backend.exceptions.*;
+import com.proyecto_1.proyecto_1.backend.participacionCongreso.ProcesadorParticipacionCongreso;
 import com.proyecto_1.proyecto_1.backend.usuario.*;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,11 +17,14 @@ public class InicioSesionServlet extends HttpServlet {
 
         String error = "";
         Usuario usuario = null;
+        boolean tieneTrabajos = false;
 
         try {
             ProcesadorUsuario chequeadorUsuario = new ProcesadorUsuario();
             usuario = new Usuario(request.getParameter("correo"), request.getParameter("contraseña"));
             usuario = chequeadorUsuario.chequearInicioSesion(usuario);
+            ProcesadorParticipacionCongreso procesadorParticipacionCongreso = new ProcesadorParticipacionCongreso();
+            tieneTrabajos = procesadorParticipacionCongreso.revisarTieneTrabajos(usuario.getCorreoElectronico());
         } catch (DataErrorException | DataBaseException e) {
             error = e.getMessage();
         }
@@ -28,7 +32,9 @@ public class InicioSesionServlet extends HttpServlet {
         RequestDispatcher disparcher = null;
         if (StringUtils.isBlank(error)) {
             request.getSession().setAttribute("correo", request.getParameter("correo"));
-            request.getSession().setAttribute("usuario", usuario);
+            request.getSession().setAttribute("adminSistema", usuario.isAdminSistema());
+            request.getSession().setAttribute("adminCongreso", usuario.isAdminCongreso());
+            request.getSession().setAttribute("tieneTrabajos", tieneTrabajos);
             disparcher = request.getRequestDispatcher("/inicio-sesion/inicio-sesion-completado.jsp");
         } else {
             request.setAttribute("error", error);

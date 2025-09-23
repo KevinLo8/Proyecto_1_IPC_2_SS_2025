@@ -32,9 +32,9 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${correo}</button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/informacion/cargar-informacion-servlet">Información</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/informacion/cargar-informacion-servlet">Perfil Del Usuario</a></li>
 
-                        <c:if test="${usuario.adminSistema == true}">
+                        <c:if test="${adminSistema == true}">
 
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/institucion/listado-de-instituciones-servlet">Administrar Instituciones</a></li>
@@ -42,11 +42,18 @@
 
                         </c:if>
 
-                        <c:if test="${usuario.adminCongreso == true}">
+                        <c:if test="${adminCongreso == true}">
 
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/congreso/formulario-congreso-servlet">Crear Congreso</a></li>
                             <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/congreso/congresos-creados-servlet">Administrar Congresos creados</a></li>
+
+                        </c:if>
+
+                        <c:if test="${tieneTrabajos == true}">
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Agregar Actividad</a></li>
 
                         </c:if>
 

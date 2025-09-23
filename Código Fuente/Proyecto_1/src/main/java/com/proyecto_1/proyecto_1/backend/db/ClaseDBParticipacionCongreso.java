@@ -53,7 +53,28 @@ public class ClaseDBParticipacionCongreso {
             return trabajos;
             
         } catch (SQLException e) {
-            throw new DataBaseException("Error al solicitar el trabajo");
+            throw new DataBaseException("Error al solicitar los trabajos");
+        }
+    }
+
+    public ArrayList<ParticipacionCongreso> solicitarTrabajosPorCongreso(String correoElectronico, int numeroCongreso) throws DataBaseException, DataErrorException {
+        Connection connection = ConexionDB.getInstance().getConnection();
+        String query = "SELECT * FROM participacion_congreso WHERE correoUsuario = ? AND numeroCongreso = ? AND tipo IN ('PONENTE','TALLERISTA')";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query);) {
+            preparedStatement.setString(1, correoElectronico);
+            preparedStatement.setInt(2, numeroCongreso);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<ParticipacionCongreso> trabajos = new ArrayList<>();
+
+            while (resultSet.next()) {
+                ParticipacionCongreso trabajo = new ParticipacionCongreso(resultSet);
+                trabajos.add(trabajo);
+            }
+            return trabajos;
+            
+        } catch (SQLException e) {
+            throw new DataBaseException("Error al solicitar los trabajos");
         }
     }
 

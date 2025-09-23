@@ -9,8 +9,19 @@ package com.proyecto_1.proyecto_1.backend.participacionCongreso;
  * @author Kevin
  */
 public enum TipoParticipacionCongreso {
-    ASISTENTE,
-    PONENTE,
-    TALLERISTA,
-    INVITADO
+    ASISTENTE(""),
+    PONENTE("PONENCIA"),
+    TALLERISTA("TALLER"),
+    INVITADO("PONENCIA");
+
+    public final String actividad;
+
+    private TipoParticipacionCongreso(String actividad) {
+        this.actividad = actividad;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
 }

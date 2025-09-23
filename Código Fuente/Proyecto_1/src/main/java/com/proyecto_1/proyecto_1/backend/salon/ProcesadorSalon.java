@@ -15,52 +15,56 @@ import java.util.ArrayList;
  * @author Kevin
  */
 public class ProcesadorSalon {
-    
+
     private final ClaseDBSalon database;
-    
+
     public ProcesadorSalon() {
         database = new ClaseDBSalon();
     }
-    
+
     public ArrayList<Salon> crearListadoSalones(String correo, String numeroCongreso) throws DataBaseException, DataErrorException {
-        
+
         ProcesadorCongreso procesadorCongreso = new ProcesadorCongreso();
         Congreso congreso = procesadorCongreso.verificarCongreso(correo, numeroCongreso);
-        
+
         ArrayList<Salon> salones = database.solicitarSalones(congreso.getNumero());
         return salones;
     }
-    
+
     public void chequearYCrearSalon(String correo, String numeroCongreso, String nombre) throws DataErrorException, DataBaseException {
-        
+
         ProcesadorCongreso procesadorCongreso = new ProcesadorCongreso();
         Congreso congreso = procesadorCongreso.verificarCongreso(correo, numeroCongreso);
-        
+
         String codigo = database.solicitarCodigo(congreso.getNumero());
-        
+
         Salon salon = new Salon(codigo, nombre, congreso.getNumero());
         database.crearSalon(salon);
     }
-    
+
     public void chequearYModificarSalon(String correo, String numeroCongreso, String codigo, String nombreViejo, String nombreNuevo) throws DataErrorException, DataBaseException {
-        
+
         ProcesadorCongreso procesadorCongreso = new ProcesadorCongreso();
         Congreso congreso = procesadorCongreso.verificarCongreso(correo, numeroCongreso);
-        
+
         Salon salon = verificarSalon(codigo, congreso);
-        
+
         database.modificarNombre(salon, nombreNuevo);
     }
-    
+
     public void chequearYEliminarSalon(String correo, String numeroCongreso, String codigo) throws DataErrorException, DataBaseException {
         ProcesadorCongreso procesadorCongreso = new ProcesadorCongreso();
         Congreso congreso = procesadorCongreso.verificarCongreso(correo, numeroCongreso);
-        
+
         Salon salon = verificarSalon(codigo, congreso);
-        
+
         database.eliminarSalon(salon);
     }
-    
+
+    public ArrayList<Salon> solicitarSalones(int numero) throws DataBaseException {
+        return database.solicitarSalones(numero);
+    }
+
     private Salon verificarSalon(String codigo, Congreso congreso) throws DataErrorException, DataBaseException {
         Salon salon = database.solicitarSalon(codigo);
         if (salon == null) {
@@ -70,5 +74,5 @@ public class ProcesadorSalon {
         }
         return salon;
     }
-    
+
 }

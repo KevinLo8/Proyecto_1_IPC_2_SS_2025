@@ -1,5 +1,9 @@
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\actividad\Actividad.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\actividad\ProcesadorActividad.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\actividad\TipoActividad.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\congreso\Congreso.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\congreso\ProcesadorCongreso.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBActividad.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBComite.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBCongreso.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\db\ClaseDBFoto.java
@@ -26,6 +30,8 @@ D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fue
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\salon\Salon.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\usuario\ProcesadorUsuario.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\backend\usuario\Usuario.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\actividad\CrearActividadServlet.java
+D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\actividad\FormularioActividadServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\congreso\CambiarEstadoConvocatoriaServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\congreso\CongresosCreadosServlet.java
 D:\Kevin\Documentos\Development\IPC2 2S2025\Proyecto_1_IPC_2_SS_2025\Código Fuente\Proyecto_1\src\main\java\com\proyecto_1\proyecto_1\controllers\congreso\CrearCongresoServlet.java
